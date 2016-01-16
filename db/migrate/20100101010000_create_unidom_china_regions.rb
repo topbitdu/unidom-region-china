@@ -4,9 +4,13 @@ class CreateUnidomChinaRegions < ActiveRecord::Migration
 
     create_table :unidom_china_regions, id: :uuid do |t|
 
-      t.column :code, 'char(6)', null: false, default: '0'*6
-      t.string :name,            null: false, default: '', limit: 200
+      t.references :owner, type: :uuid, null: false,
+        polymorphic: { null: false, default: '', limit: 200 }
 
+      t.column :numeric_code, 'char(6)', null: false, default: '0'*6
+      t.string :alphabetic_code,         null: true,  default: nil, limit: 3
+
+      t.string  :name,    null: false, default: '', limit: 200
       t.boolean :virtual, null: false, default: false
 
       t.text :instruction
@@ -22,7 +26,9 @@ class CreateUnidomChinaRegions < ActiveRecord::Migration
 
     end
 
-    add_index :unidom_china_regions, :code, unique: true
+    add_index :unidom_china_regions, :owner_id
+    add_index :unidom_china_regions, [ :numeric_code,    :owner_id, :owner_type ], unique: true, name: 'index_unidom_china_regions_on_numeric_code_and_owner'
+    add_index :unidom_china_regions, [ :alphabetic_code, :owner_id, :owner_type ], unique: true, name: 'index_unidom_china_regions_on_alphabetic_code_and_owner'
 
   end
 
