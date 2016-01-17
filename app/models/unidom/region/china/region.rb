@@ -34,7 +34,7 @@ class Unidom::Region::China::Region < ActiveRecord::Base
   scope :name_is,       ->(name)           { where name:    name    }
   scope :being_virtual, ->(virtual = true) { where virtual: virtual }
 
-  include ::Unidom::Common::ModelExtension
+  include ::Unidom::Common::Concerns::ModelExtension
 
   def numeric_code_prefix
     numeric_code[0..1]
