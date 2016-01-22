@@ -4,7 +4,7 @@ class CreateUnidomChinaRegions < ActiveRecord::Migration
 
     create_table :unidom_china_regions, id: :uuid do |t|
 
-      t.references :owner, type: :uuid, null: false,
+      t.references :schema, type: :uuid, null: false,
         polymorphic: { null: false, default: '', limit: 200 }
 
       t.column :numeric_code, 'char(6)', null: false, default: '0'*6
@@ -26,9 +26,9 @@ class CreateUnidomChinaRegions < ActiveRecord::Migration
 
     end
 
-    add_index :unidom_china_regions, :owner_id
-    add_index :unidom_china_regions, [ :numeric_code,    :owner_id, :owner_type ], unique: true, name: 'index_unidom_china_regions_on_numeric_code_and_owner'
-    add_index :unidom_china_regions, [ :alphabetic_code, :owner_id, :owner_type ], unique: true, name: 'index_unidom_china_regions_on_alphabetic_code_and_owner'
+    add_index :unidom_china_regions, :schema_id
+    add_index :unidom_china_regions, [ :numeric_code,    :schema_id, :schema_type ], unique: true, name: 'index_unidom_china_regions_on_numeric_code_and_schema'
+    add_index :unidom_china_regions, [ :alphabetic_code, :schema_id, :schema_type ], unique: true, name: 'index_unidom_china_regions_on_alphabetic_code_and_schema'
 
   end
 
