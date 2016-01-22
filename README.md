@@ -7,9 +7,15 @@ Unidom (统一领域对象模型)是一系列的领域模型引擎。中国行�
 ```ruby
 gem 'unidom-region-china'
 ```
+
 ## Run the Database Migration:
 ```shell
 rake db:migrate
+```
+
+## Import Data:
+```shell
+bundle exec rake unidom:region:china:import file=/china-region-data/NBS-county/20141031.csv from_date=2014-10-31 scheme_id= scheme_type=
 ```
 
 ## Call the Model:

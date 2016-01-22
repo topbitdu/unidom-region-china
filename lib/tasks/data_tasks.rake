@@ -7,28 +7,28 @@ namespace :unidom do
       # bundle exec rake unidom:region:china:import
       #   file=/data.csv
       #   from_date=2020-01-01
-      #   schema_id=
-      #   schema_type=
+      #   scheme_id=
+      #   scheme_type=
       task import: :environment do
 
         include ::Unidom::Common::DataHelper
 
         file_name   = ENV['file']
-        schema_id   = ENV['schema_id']||::Unidom::Common::NULL_UUID
-        schema_type = ENV['schema_type']||''
+        scheme_id   = ENV['scheme_id']||::Unidom::Common::NULL_UUID
+        scheme_type = ENV['scheme_type']||''
         opened_at   = parse_time ENV['from_date']
 
         updated_count = 0
         created_count = 0
 
-        region_entities = ::Unidom::Region::China::Region.schema_id_is(schema_id).schema_type_is(schema_type).select('id, name, virtual, numeric_code, alphabetic_code, schema_id, schema_type, opened_at, closed_at, defunct, updated_at').to_a
+        region_entities = ::Unidom::Region::China::Region.scheme_id_is(scheme_id).scheme_type_is(scheme_type).select('id, name, virtual, numeric_code, alphabetic_code, scheme_id, scheme_type, opened_at, closed_at, defunct, updated_at').to_a
 
         each_csv_row file_name do |region|
 
           numeric_code    = region['numeric_code']
           alphabetic_code = region['alphabetic_code']
 
-          attributes = { name: region['name'], virtual: region['virtual'], schema_id: schema_id, schema_type: schema_type, opened_at: opened_at }
+          attributes = { name: region['name'], virtual: region['virtual'], scheme_id: scheme_id, scheme_type: scheme_type, opened_at: opened_at }
           attributes[:alphabetic_code] = alphabetic_code if alphabetic_code.present?
 
           if region_entities.present?

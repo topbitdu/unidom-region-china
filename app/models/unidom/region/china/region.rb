@@ -29,12 +29,12 @@ class Unidom::Region::China::Region < ActiveRecord::Base
   validates :alphabetic_code, allow_blank: true, length: { minimum: 2 }
   validates :name,            presence: true,    length: { maximum: self.columns_hash['name'].limit }
 
-  belongs_to :schema,    polymorphic: true
+  belongs_to :scheme,    polymorphic: true
   has_many   :locations, class_name: 'Unidom::Geo::Location', as: :region
 
-  scope :schema_is,      ->(schema) { schema.present? ? where(schema: schema) : schema_id_is.schema_type_is }
-  scope :schema_id_is,   ->(schema_id   = ::Unidom::Common::NULL_UUID) { where schema_id:   schema_id   }
-  scope :schema_type_is, ->(schema_type = ''                         ) { where schema_type: schema_type }
+  scope :scheme_is,      ->(scheme) { scheme.present? ? where(scheme: scheme) : scheme_id_is.scheme_type_is }
+  scope :scheme_id_is,   ->(scheme_id   = ::Unidom::Common::NULL_UUID) { where scheme_id:   scheme_id   }
+  scope :scheme_type_is, ->(scheme_type = ''                         ) { where scheme_type: scheme_type }
 
   scope :name_is,       ->(name)           { where name:    name    }
   scope :being_virtual, ->(virtual = true) { where virtual: virtual }
