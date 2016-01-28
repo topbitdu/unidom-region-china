@@ -22,5 +22,6 @@ bundle exec rake unidom:region:china:import file=/china-region-data/NBS-county/2
 
 ## Call the Model:
 ```ruby
-Unidom::Region::China::Region.numeric_coded_as('120000').valid_at.alive.first # Tianjing (天津)
+Unidom::Region::China::Region.root_level # All the 31 province-level regions including Beijing, Tianjin, etc.
+Unidom::Region::China::Region.numeric_coded_as('120000').valid_at.alive.first # Tianjin (天津)
 ```
