@@ -27,7 +27,7 @@ class Unidom::Region::China::Region < ActiveRecord::Base
 
   validates :numeric_code,    numericality: { integer_only: true }
   validates :alphabetic_code, allow_blank: true, length: { minimum: 2 }
-  validates :name,            presence: true,    length: { maximum: self.columns_hash['name'].limit }
+  validates :name,            presence:    true, length: { maximum: self.columns_hash['name'].limit }
 
   belongs_to :scheme,    polymorphic: true
   has_many   :locations, class_name: 'Unidom::Geo::Location', as: :region
@@ -38,6 +38,8 @@ class Unidom::Region::China::Region < ActiveRecord::Base
 
   scope :name_is,       ->(name)           { where name:    name    }
   scope :being_virtual, ->(virtual = true) { where virtual: virtual }
+
+  scope :root_level, -> { numeric_code_ending_with '0000' }
 
   include ::Unidom::Common::Concerns::ModelExtension
 
