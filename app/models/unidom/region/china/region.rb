@@ -41,7 +41,7 @@ class Unidom::Region::China::Region < ActiveRecord::Base
 
   scope :root_level, -> { numeric_code_ending_with '0000' }
 
-  include ::Unidom::Common::Concerns::ModelExtension
+  include Unidom::Common::Concerns::ModelExtension
 
   def numeric_code_prefix
     numeric_code[0..1]
