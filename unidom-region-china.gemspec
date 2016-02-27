@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors     = [ 'Topbit Du' ]
   spec.email       = [ 'topbit.du@gmail.com' ]
   spec.homepage    = 'https://github.com/topbitdu/unidom-region-china'
-  spec.summary     = 'The China Region domain model engine includes China Region and its relative models.'
-  spec.description = 'Unidom (UNIfied Domain Object Model) is a series of domain model engines. The China Contact domain model engine includes Mobile Phone Number and its relative models. Unidom (统一领域对象模型)是一系列的领域模型引擎。中国联系方式领域模型引擎包括中国大陆的移动电话号码及其相关的模型。'
+  spec.summary     = 'Unidom China Region Domain Model Engine 中国行政区划领域模型引擎'
+  spec.description = 'Unidom (UNIfied Domain Object Model) is a series of domain model engines. The China Contact domain model engine includes Mobile Phone Number and its relative models. Unidom (统一领域对象模型)是一系列的领域模型引擎。中国行政区划领域模型引擎包括中国大陆的移动电话号码及其相关的模型。'
   spec.license     = 'MIT'
 
   spec.files         = Dir[ '{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md' ]
