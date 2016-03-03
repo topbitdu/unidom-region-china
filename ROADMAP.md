@@ -9,3 +9,6 @@
 
 ## v1.1
 1. Improved the Region model to add the #root_level scope.
+
+## v1.2
+1. Deprecated the classes and methods, use unidom-geo-china instead.
