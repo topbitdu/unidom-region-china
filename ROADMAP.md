@@ -12,4 +12,4 @@
 
 ## v1.2
 1. Deprecated the classes and methods, use unidom-geo-china instead.
-2. Improved the Ruby Gem Specification to depend on unidom-common v0.4.
+2. Improved the Ruby Gem Specification to depend on unidom-common v0.5
