@@ -7,6 +7,10 @@ Unidom (UNIfied Domain Object Model) is a series of domain model engines. The Ch
 Unidom (统一领域对象模型)是一系列的领域模型引擎。中国行政区划领域模型引擎包括中国大陆的行政区划模型及其数据迁移脚本。
 This gem is deprecated, please use [unidom-geo-china](https://github.com/topbitdu/unidom-geo-china) instead.
 
+## Recent Update
+Check out the [Road Map](ROADMAP.md) to find out what's the next.
+Check out the [Change Log](CHANGELOG.md) to find out what's new.
+
 ## Usage in Gemfile
 ```ruby
 gem 'unidom-region-china'
